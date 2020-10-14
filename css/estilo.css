@@ -1,0 +1,75 @@
+/* .img-slider {
+    width: 100%;
+} */
+
+/* .carousel-item {
+    width: 100%;
+    max-height: 890px
+} */
+
+body {
+    font-family: 'Violina Regular';
+    /* font-family: 'Kingsmen_D'; */
+}
+
+/* Estilos para nav */
+nav #nav-principal li a {
+    padding: 0.5rem 1rem;
+    transition: all 0.2s linear;
+    border-radius: 5px;
+}
+
+nav #nav-principal li a:hover {
+    color: white;
+    background: #F5A623;
+}
+
+/* Modificando tamaño a img de slider */
+#tam-img1 {
+    height: 780px;
+}
+
+#tam-img2 {
+    height: 780px;
+}
+
+#tam-img3 {
+    height: 780px;
+}
+
+#texto-slider {
+    margin-bottom: 320px;
+}
+
+/* Diseñando estilo para footer */
+footer {
+    background-color: #343a40;
+}
+
+#footer-nav ul li a {
+    color: white;
+
+}
+
+/* Modificando tamaño a slider para dispositivos con pantalla pequeña */
+
+@media (max-width: 480px) {
+
+    .carousel-inner {
+        width: 100%;
+        max-height: 500px !important;
+    }
+}
+
+
+/* FUENTES */
+
+@font-face {
+    font-family: 'Violina Regular';
+    src: url('../font/Violina\ Regular.otf');
+}
+
+@font-face {
+    font-family: 'Kingsmen_D';
+    src: url('../font/Kingsmen_D.otf');
+}
