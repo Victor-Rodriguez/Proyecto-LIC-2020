@@ -8,6 +8,14 @@
     }
     let baseDatos = [];
    
+    document.getElementById("btnBlockMod").addEventListener("click", function(){
+        document.getElementById("exampleModalLabel").innerHTML ="Agregar Suceso";
+        document.getElementById("btnModificarSuceso").style.display="none";
+        document.getElementById("btnAnadirSuceso").style.display="block";
+    });
+
+
+
 document.getElementById("btnAnadirSuceso").addEventListener("click", function(){
 
     document.getElementById("contenedor").innerHTML = "";
@@ -19,10 +27,35 @@ document.getElementById("btnAnadirSuceso").addEventListener("click", function(){
         baseDatos = [];
     }
 
+    var i= 0;
+    var id;
+    var bandera = false; 
+   do{
 
-    var id = "suceso" + baseDatos.length;
- 
-    var suces= document.getElementById("titulosuceso").value;
+    id= "suceso" + i;
+
+    if(baseDatos[i] === undefined){
+        
+        bandera = true;
+        
+        break;
+        
+    }
+
+    if(baseDatos[i].idsuceso != id){
+
+        
+        bandera = true;
+        break;
+    }
+   
+    i++;
+    
+   }while(bandera = true);
+   
+  
+    
+   var suces= document.getElementById("titulosuceso").value;
   
     var descrip = document.getElementById("descripcionsuceso").value;
     nuevoSuceso = new Suceso(id, suces, descrip);
@@ -30,6 +63,24 @@ document.getElementById("btnAnadirSuceso").addEventListener("click", function(){
 
     baseDatos.push(nuevoSuceso);
 
+    function dynamicSort(property) {
+        var sortOrder = 1;
+        if(property[0] === "-") {
+            sortOrder = -1;
+            property = property.substr(1);
+        }
+        return function (a,b) {
+            /* next line works with strings and numbers, 
+             * and you may want to customize it to your needs
+             */
+            var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+            return result * sortOrder;
+        }
+    }
+
+    baseDatos.sort(dynamicSort("idsuceso"));
+
+     
 localStorage.setItem("sucesos",JSON.stringify(baseDatos));
    
     
@@ -39,10 +90,10 @@ localStorage.setItem("sucesos",JSON.stringify(baseDatos));
 
     for(datos in baseDatos){
        
-        document.getElementById("contenedor").innerHTML += "<div class='col-md-3'><div class='card mb-4 shadow-sm'> <rect width='100%' height='100%' fill='#55595c' /><div class='card-body'><h4 class='card-title'>"+baseDatos[datos].suceso+"</h4><p class='card-text' >Descripción del suceso: "+ baseDatos[datos].descripcion +"</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><a type='button' href='linea.html?id="+ baseDatos[datos].idsuceso +"' class='btn btn-sm btn-outline-secondary'>Ver linea</a></div></div></div>  </div>"; 
+        document.getElementById("contenedor").innerHTML += "<div class='col-md-3'><div class='card mb-4 shadow-sm'> <rect width='100%' height='100%' fill='#55595c' /><div class='card-body'><h4 class='card-title'>"+baseDatos[datos].suceso+"</h4><p class='card-text' >Descripción del suceso: "+ baseDatos[datos].descripcion +"</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><a type='button' href='linea.html?idlinea="+baseDatos[datos].idsuceso +"'  class='btn btn-sm btn-outline-secondary'>Ver linea</a><div class='btn-group'><a type='button' class='btn btn-sm btn-outline-info' id='btnModificar' onclick='modificarSuceso(`"+baseDatos[datos].idsuceso+"`, `"+baseDatos[datos].suceso+"`, `"+baseDatos[datos].descripcion+"` )'  data-toggle='modal' data-target='#exampleModal'>Modificar</a></div><div class='btn-group'><a type='button' class='btn btn-sm btn-outline-danger' id='btnModificar' onclick='btnEliminar(`"+baseDatos[datos].idsuceso+"`)'  >Eliminar</a></div></div></div></div>  </div>"; 
 
       }
-   
+
 
 });
 
@@ -59,9 +110,69 @@ document.addEventListener("DOMContentLoaded", function(){
 
     for(datos in baseDatos){
        
-      document.getElementById("contenedor").innerHTML += "<div class='col-md-3'><div class='card mb-4 shadow-sm'> <rect width='100%' height='100%' fill='#55595c' /><div class='card-body'><h4 class='card-title'>"+baseDatos[datos].suceso+"</h4><p class='card-text' >Descripción del suceso: "+ baseDatos[datos].descripcion +"</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><a type='button' href='linea.html?idlinea="+baseDatos[datos].idsuceso +"'  class='btn btn-sm btn-outline-secondary'>Ver linea</a></div></div></div>  </div>"; 
+      document.getElementById("contenedor").innerHTML += "<div class='col-md-3'><div class='card mb-4 shadow-sm'> <rect width='100%' height='100%' fill='#55595c' /><div class='card-body'><h4 class='card-title'>"+baseDatos[datos].suceso+"</h4><p class='card-text' >Descripción del suceso: "+ baseDatos[datos].descripcion +"</p><div class='d-flex justify-content-between align-items-center'><div class='btn-group'><a type='button' href='linea.html?idlinea="+baseDatos[datos].idsuceso +"'  class='btn btn-sm btn-outline-secondary'>Ver linea</a><div class='btn-group'><a type='button' class='btn btn-sm btn-outline-info' id='btnModificar' onclick='modificarSuceso(`"+baseDatos[datos].idsuceso+"`, `"+baseDatos[datos].suceso+"`, `"+baseDatos[datos].descripcion+"` )'  data-toggle='modal' data-target='#exampleModal'>Modificar</a></div><div class='btn-group'><a type='button' class='btn btn-sm btn-outline-danger' id='btnModificar' onclick='btnEliminar(`"+baseDatos[datos].idsuceso+"`)'  >Eliminar</a></div></div></div></div>  </div>"; 
 
     }
 }
 });
 
+function modificarSuceso(id, titulo, descripcion){
+
+    document.getElementById("exampleModalLabel").innerHTML ="Modificar Suceso";
+    document.getElementById("btnModificarSuceso").style.display="block";
+    document.getElementById("btnAnadirSuceso").style.display="none";
+    document.getElementById("idsuceso").value = id;
+    document.getElementById("titulosuceso").value = titulo;
+    document.getElementById("descripcionsuceso").value = descripcion;
+    
+}
+function btnEliminar(id){
+    
+    var confirmacion = confirm("¿Esta seguro de eliminar este suceso?");
+    if(confirmacion ==  true){
+
+        baseDatos = JSON.parse(localStorage.getItem("sucesos"));
+
+        var indice = baseDatos.findIndex(elemento => {
+
+            return elemento.idsuceso === id;
+        });
+
+        
+        baseDatos.splice(indice,1);
+        console.log(baseDatos);
+        localStorage.setItem("sucesos", JSON.stringify(baseDatos));
+
+        localStorage.removeItem(id);
+        location.reload();
+        alert("Evento eliminado exitosamente");
+    }
+
+}
+
+document.getElementById("btnModificarSuceso").addEventListener("click", function(){
+
+    var id = document.getElementById("idsuceso").value;
+    var titulo =  document.getElementById("titulosuceso").value; 
+    var descripcion =  document.getElementById("descripcionsuceso").value;
+    baseDatos = JSON.parse(localStorage.getItem("sucesos"));
+
+    var indice = baseDatos.findIndex(elemento => {
+
+        return elemento.idsuceso === id;
+    });
+
+    for(datos in baseDatos){
+    
+    if(datos == indice){
+
+        baseDatos[datos].suceso = titulo;
+        baseDatos[datos].descripcion = descripcion;
+
+    }
+    }
+    
+    localStorage.setItem("sucesos", JSON.stringify(baseDatos));
+
+    location.reload();
+});

@@ -1,69 +1,4 @@
 
-function Evento(idevento, evento, descripcion, diaevento, mesevento ,anioevento){
-
-    this.idevento = idevento;
-    this.evento = evento;
-    this.descripcion = descripcion;
-    this.diaevento = diaevento;
-    this.mesevento = mesevento;
-    this.anioevento = anioevento;
-}
-
-function getParameterByName(name) {
-    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-    results = regex.exec(location.search);
-    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
-var idsuceso = getParameterByName("idlinea");
-
-
-arregloSucesos =  JSON.parse(localStorage.getItem("sucesos"));
-
-var objeto = arregloSucesos.find(elemento => {
-
-    return elemento.idsuceso === idsuceso;
-});
-
-let baseDatos = [];
-
-document.getElementById("h1titulo").innerHTML = objeto.suceso;
-
-document.getElementById("btnAgregarEvento").addEventListener("click", function(){
-
-    document.getElementById("contenedor").innerHTML = "";
-
-    baseDatos = JSON.parse(localStorage.getItem(objeto.idsuceso));
-
-    
-    if(baseDatos === null){
-        baseDatos = [];
-    }
- 
-    date  = new Date(document.getElementById("fechaevento").value);
-    var idevent = "evento"+ baseDatos.length;
-    var titevent = document.getElementById("txttitulo").value;
-    var descevent = document.getElementById("txtdescripcion").value; 
-    var diaevent =  date.getDate()+1;
-    var mesevent =   date.getMonth()+1;
-    var anioevent =  date.getFullYear();
-    
-    nuevoEvento = new Evento(idevent, titevent,descevent,diaevent.toString(), mesevent.toString(),anioevent.toString());
-
-    baseDatos.push(nuevoEvento);
-    
-    localStorage.setItem(objeto.idsuceso, JSON.stringify(baseDatos));
-
-    document.getElementById("txttitulo").value = "";
-    document.getElementById("txtdescripcion").value = ""; 
-    document.getElementById("fechaevento").value= "";
-
-
-    location.reload();
-});
-
-
-
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("contenedor").innerHTML = "";
     baseDatos = JSON.parse(localStorage.getItem(objeto.idsuceso));
@@ -140,6 +75,71 @@ document.addEventListener("DOMContentLoaded", function(){
 
  }
 });
+function Evento(idevento, evento, descripcion, diaevento, mesevento ,anioevento){
+
+    this.idevento = idevento;
+    this.evento = evento;
+    this.descripcion = descripcion;
+    this.diaevento = diaevento;
+    this.mesevento = mesevento;
+    this.anioevento = anioevento;
+}
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+var idsuceso = getParameterByName("idlinea");
+
+
+arregloSucesos =  JSON.parse(localStorage.getItem("sucesos"));
+
+var objeto = arregloSucesos.find(elemento => {
+
+    return elemento.idsuceso === idsuceso;
+});
+
+let baseDatos = [];
+
+document.getElementById("h1titulo").innerHTML = objeto.suceso;
+
+document.getElementById("btnAgregarEvento").addEventListener("click", function(){
+
+    document.getElementById("contenedor").innerHTML = "";
+
+    baseDatos = JSON.parse(localStorage.getItem(objeto.idsuceso));
+
+    
+    if(baseDatos === null){
+        baseDatos = [];
+    }
+ 
+    date  = new Date(document.getElementById("fechaevento").value);
+    var idevent = "evento"+ baseDatos.length;
+    var titevent = document.getElementById("txttitulo").value;
+    var descevent = document.getElementById("txtdescripcion").value; 
+    var diaevent =  date.getDate()+1;
+    var mesevent =   date.getMonth()+1;
+    var anioevent =  date.getFullYear();
+    
+    nuevoEvento = new Evento(idevent, titevent,descevent,diaevent.toString(), mesevent.toString(),anioevent.toString());
+
+    baseDatos.push(nuevoEvento);
+    
+    localStorage.setItem(objeto.idsuceso, JSON.stringify(baseDatos));
+
+    document.getElementById("txttitulo").value = "";
+    document.getElementById("txtdescripcion").value = ""; 
+    document.getElementById("fechaevento").value= "";
+
+
+    location.reload();
+});
+
+
+
 
 document.getElementById("btnAñadirEventModl").addEventListener("click", function(){
     document.getElementById("btnAgregarEvento").style.display = "block";
