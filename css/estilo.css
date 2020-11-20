@@ -1,12 +1,3 @@
-/* .img-slider {
-    width: 100%;
-} */
-
-/* .carousel-item {
-    width: 100%;
-    max-height: 890px
-} */
-
 body {
     font-family: 'Violina Regular';
     /* font-family: 'Kingsmen_D'; */
@@ -24,25 +15,29 @@ nav #nav-principal li a:hover {
     background: #F5A623;
 }
 
-/* Modificando tamaño a img de slider */
-#tam-img1 {
-    height: 780px;
+/*Dimensiones del Slider */
+/* .carousel-item{
+    height: 100vh;
+} */
+
+.carousel-inner {
+    width: 100%;
+    max-height: 700px !important;
 }
 
-#tam-img2 {
-    height: 780px;
+#tam-img {
+    max-width: 100%;
+    
 }
 
-#tam-img3 {
-    height: 780px;
+#texto-slider{
+    margin-bottom: 40%;
 }
 
-#texto-slider {
-    margin-bottom: 320px;
-}
 
 /* Diseñando estilo para footer */
 footer {
+    width: 100%;
     background-color: #343a40;
 }
 
@@ -55,12 +50,26 @@ footer {
 
 @media (max-width: 480px) {
 
-    .carousel-inner {
+    footer {
+        position: absolute;
         width: 100%;
-        max-height: 500px !important;
+        height: 400px;
+        background-color: #343a40;
     }
-}
+    
+    #footer-nav ul li a {
+        color: white;
+    
+    }
+    #texto-slider{
+        margin-bottom: 15%;
+    }
 
+    #texto-slider h1{
+        font-size: 1.2em;
+    }
+
+}
 
 /* FUENTES */
 
