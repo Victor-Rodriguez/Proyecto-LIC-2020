@@ -19,9 +19,9 @@
       <!-- Se muestra solo en pantallas pequeñas a la izquierda del menu -->
       <div class="d-block d-sm-none d-sm-block d-md-block d-lg-none">
         <img
-          src="img/logo-timelime-maker2.png"
+          src="img/logo-timeline-maker-menu2.png"
           class="d-inline-block align-top"
-          alt="Logo Liga Española"
+          alt="Logo Timeline Maker"
         />
       </div>
 
@@ -46,7 +46,7 @@
             <a class="nav-link" href="ayuda.html">Como Usar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Crear</a>
+            <a class="nav-link" href="crear.html">Crear</a>
           </li>
         </ul>
         <!-- LOGO -->
@@ -54,9 +54,9 @@
         <div class="d-none d-lg-block">
           <a class="navbar-brand" href="index.html">
             <img
-              src="img/logo-timelime-maker2.png"
+              src="img/logo-timeline-maker-menu.png"
               class="d-inline-block align-top"
-              alt="Logo Liga Española"
+              alt="Logo Timeline Maker"
             />
           </a>
         </div>
@@ -76,15 +76,15 @@
             type="search"
             placeholder="Buscar"
             aria-label="Search"
+            id="txtbuscar"
           />
-          <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">
+          <button class="btn btn-outline-warning my-2 my-sm-0" type="button" id="btnBuscar">
             Buscar
           </button>
         </form>
       </div>
     </nav>
-    <hr />
-    <br /><br />
+    <hr/> <br /><br />
 
     <!--contenido-->
     <div class="container mb-5">
@@ -142,4 +142,5 @@
       </div>
     </footer>
   </body>
+  <script src="js/buscador.js"></script>
 </html>

@@ -12,76 +12,77 @@
     <title>Primera guerra mundial</title>
 </head>
 <body>
-   <nav class="navbar navbar-expand-lg navbar-light">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <!-- LOGO -->
+    <!-- Se muestra solo en pantallas pequeñas a la izquierda del menu -->
+    <div class="d-block d-sm-none d-sm-block d-md-block d-lg-none">
+      <img
+        src="img/logo-timeline-maker-menu2.png"
+        class="d-inline-block align-top"
+        alt="Logo Timeline Maker"
+      />
+    </div>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto" id="nav-principal">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="ayuda.html">Como Usar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="crear.html">Crear</a>
+        </li>
+      </ul>
       <!-- LOGO -->
-      <!-- Se muestra solo en pantallas pequeñas a la izquierda del menu -->
-      <div class="d-block d-sm-none d-sm-block d-md-block d-lg-none">
-        <img
-          src="img/logo-timeline-maker-menu2.png"
-          class="d-inline-block align-top"
-          alt="Logo Timeline Maker"
-        />
-      </div>
-
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto" id="nav-principal">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="ayuda.html">Como Usar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Crear</a>
-          </li>
-        </ul>
-        <!-- LOGO -->
-        <!-- Se muestra en pantallas grandes al centro del menu -->
-        <div class="d-none d-lg-block">
-          <a class="navbar-brand" href="index.html">
-            <img
-              src="img/logo-timeline-maker-menu.png"
-              class="d-inline-block align-top"
-              alt="Logo Timeline Maker"
-            />
-          </a>
-        </div>
-        <ul class="navbar-nav ml-auto" id="nav-principal">
-          <li class="nav-item">
-            <a class="nav-link" href="integrantes.html">Equipo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Contacto.html">Contactar</a>
-          </li>
-        </ul>
-
-        <!-- BUSCADOR -->
-        <form class="form-inline my-2 my-lg-0">
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Buscar"
-            aria-label="Search"
+      <!-- Se muestra en pantallas grandes al centro del menu -->
+      <div class="d-none d-lg-block">
+        <a class="navbar-brand" href="index.html">
+          <img
+            src="img/logo-timeline-maker-menu.png"
+            class="d-inline-block align-top"
+            alt="Logo Timeline Maker"
           />
-          <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">
-            Buscar
-          </button>
-        </form>
+        </a>
       </div>
-    </nav>
-    <hr/>
+      <ul class="navbar-nav ml-auto" id="nav-principal">
+        <li class="nav-item">
+          <a class="nav-link" href="integrantes.html">Equipo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Contacto.html">Contactar</a>
+        </li>
+      </ul>
+
+      <!-- BUSCADOR -->
+      <form class="form-inline my-2 my-lg-0">
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Buscar"
+          aria-label="Search"
+          id="txtbuscar"
+        />
+        <button class="btn btn-outline-warning my-2 my-sm-0" type="button" id="btnBuscar">
+          Buscar
+        </button>
+      </form>
+    </div>
+  </nav>
+  <hr/>
  
     
     <div class="page" style="margin-bottom: 9%;">
@@ -165,7 +166,7 @@
           
   <div class="form-group">
     <label for="example-date-input" >Fecha evento</label>
-      <input class="form-control" type="date" id="fechaevento" id="example-date-input">
+      <input class="form-control" type="date" id="fechaevento" >
   </div>
             <div class="form-group">
     <label for="exampleFormControlTextarea1">Descripcion evento</label>
@@ -213,4 +214,5 @@
 
 </body>
 <script src="js/linea.js"></script>
+<script src="js/buscador.js"></script>
 </html>

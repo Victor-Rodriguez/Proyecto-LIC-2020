@@ -107,6 +107,19 @@ document.getElementById("h1titulo").innerHTML = objeto.suceso;
 
 document.getElementById("btnAgregarEvento").addEventListener("click", function(){
 
+    date  = new Date(document.getElementById("fechaevento").value);
+    var idevent = "evento"+ baseDatos.length;
+    var titevent = document.getElementById("txttitulo").value;
+    var descevent = document.getElementById("txtdescripcion").value; 
+    var diaevent =  date.getDate()+1;
+    var mesevent =   date.getMonth()+1;
+    var anioevent =  date.getFullYear();
+
+    if(titevent === "" || descevent==="" || isNaN(diaevent)=== true || isNaN(mesevent)=== true || isNaN(anioevent)=== true ){
+
+        alert("Todos los campos son requeridos");
+    }else{
+
     document.getElementById("contenedor").innerHTML = "";
 
     baseDatos = JSON.parse(localStorage.getItem(objeto.idsuceso));
@@ -116,13 +129,7 @@ document.getElementById("btnAgregarEvento").addEventListener("click", function()
         baseDatos = [];
     }
  
-    date  = new Date(document.getElementById("fechaevento").value);
-    var idevent = "evento"+ baseDatos.length;
-    var titevent = document.getElementById("txttitulo").value;
-    var descevent = document.getElementById("txtdescripcion").value; 
-    var diaevent =  date.getDate()+1;
-    var mesevent =   date.getMonth()+1;
-    var anioevent =  date.getFullYear();
+ 
     
     nuevoEvento = new Evento(idevent, titevent,descevent,diaevent.toString(), mesevent.toString(),anioevent.toString());
 
@@ -136,6 +143,7 @@ document.getElementById("btnAgregarEvento").addEventListener("click", function()
 
 
     location.reload();
+}
 });
 
 
@@ -202,10 +210,16 @@ document.getElementById("btnModificarEvento").addEventListener("click", function
    var aniolocal =    date.getFullYear();
   
 
+
    var titulo = document.getElementById("txttitulo").value;
    var descripcion = document.getElementById("txtdescripcion").value; 
   var id = document.getElementById("txtIdEvento").value;
 
+  if(titulo === "" || descripcion==="" || isNaN(dialocal)=== true || isNaN(meslocal)=== true ||isNaN(aniolocal)=== true ) {
+      alert("Todos los campos son requeridos");
+  }else{
+
+  
   baseDatos = JSON.parse(localStorage.getItem(objeto.idsuceso));
     
   var indice = baseDatos.findIndex(elemento => {
@@ -229,5 +243,6 @@ document.getElementById("btnModificarEvento").addEventListener("click", function
   localStorage.setItem(objeto.idsuceso, JSON.stringify(baseDatos));
 
   location.reload();
+}
    
 });
