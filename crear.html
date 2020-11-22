@@ -78,13 +78,17 @@
             aria-label="Search"
             id="txtbuscar"
           />
-          <button class="btn btn-outline-warning my-2 my-sm-0" type="button" id="btnBuscar">
+          <button
+            class="btn btn-outline-warning my-2 my-sm-0"
+            type="button"
+            id="btnBuscar"
+          >
             Buscar
           </button>
         </form>
       </div>
     </nav>
-    <hr/>
+    <hr />
 
     <main role="main">
       <div class="album py-5">
@@ -115,14 +119,14 @@
           <div class="col-md-5 ml-auto">
             <nav class="navbar navbar-expand-lg" id="footer-nav">
               <ul class="navbar-nav">
-                <li class="nav-item active">
+                <li class="nav-item">
                   <a class="nav-link" href="index.html">Inicio</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="linea.html">Linea de Tiempo</a>
+                <li class="nav-item active">
+                  <a class="nav-link" href="crear.html">Linea de Tiempo</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Contactar</a>
+                  <a class="nav-link" href="Contacto.html">Contactar</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="ayuda.html">Ayuda</a>
@@ -157,13 +161,13 @@
           <div class="modal-body">
             <form>
               <input
-                  type="text"
-                  class="form-control"
-                  id="idsuceso"
-                  placeholder="Título"
-                  required="debe ingresar titulo"
-                   style="visibility: hidden;"
-                />
+                type="text"
+                class="form-control"
+                id="idsuceso"
+                placeholder="Título"
+                required="debe ingresar titulo"
+                style="visibility: hidden"
+              />
               <div class="form-group">
                 <label for="exampleInputPassword1">Titulo Suceso</label>
                 <input
@@ -197,13 +201,12 @@
               Cerrar
             </button>
 
-            
             <input
               type="button"
               value="Modificar"
               id="btnModificarSuceso"
               class="btn btn-primary"
-              style="display: none;"
+              style="display: none"
             />
             <input
               type="button"
